@@ -19,6 +19,7 @@ body {
 }
 
 
+
 /* 헤더 */
 #header {
   padding: 1%;
@@ -86,7 +87,10 @@ body {
   width: 100%;
 }
 
+
+
 #main .panel.intro {
+  padding-top: 15%;
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -133,8 +137,10 @@ body {
 }
 
 
+
 #main .panel.about {
   width: 100%;
+  padding-top: 13%;
 }
 
 #main .panel.about .inner {
@@ -213,20 +219,80 @@ body {
 }
 
 
+
 #main .panel.project {
+  padding-top: 10%;
+  width: 100%;
 }
 
-#main .panel.project .inner {}
+#main .panel.project .inner {
+  width: calc(100% - 300px);
+  margin: 0 auto;
+}
+
+#main .panel.project .inner .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#main .panel.project .inner .list .item {
+  padding: 1%;
+  margin-bottom: 5%;
+  width: 500px;
+  border: 1px solid #333333;
+}
+
+#main .panel.project .inner .list .item .image {}
+
+#main .panel.project .inner .list .item .image img {}
+
+#main .panel.project .inner .list .item .text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Lato', 'Noto Sans KR';
+  color: #333333;
+  line-height: 1.5;
+}
+
+#main .panel.project .inner .list .item .text h3 {
+  font-family: 'Zalando Sans Expanded';
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#main .panel.project .inner .list .item .text h4 {
+  font-size: 16px;
+}
+
+#main .panel.project .inner .list .item .text ul {
+  display: flex;
+  gap: 3%;
+  font-family: 'Source Code Pro', 'Noto Sans KR';
+  font-size: 14px;
+}
+
+#main .panel.project .inner .list .item .text ul li {}
+
+#main .panel.project .inner .list .item .text .icon {}
+
+#main .panel.project .inner .list .item .text .icon ul {}
+
+#main .panel.project .inner .list .item .text .icon ul li {}
+
 
 
 #main .panel.design {
-  padding-top: 13%;
+  padding-top: 10%;
 }
+
 
 
 #main .panel.contact {
   padding-top: 13%;
 }
+
 
 
 /* 푸터 */
