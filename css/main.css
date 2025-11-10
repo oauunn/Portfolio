@@ -87,12 +87,10 @@ body {
 }
 
 #main .panel.intro {
-  padding-top: 13%;
   width: 100%;
   margin: 0 auto;
   text-align: center;
   align-items: center;
-  background-color: red;
 }
 
 #main .panel.intro h1 {
@@ -136,7 +134,6 @@ body {
 
 
 #main .panel.about {
-  padding-top: 13%;
   width: 100%;
 }
 
@@ -217,7 +214,6 @@ body {
 
 
 #main .panel.project {
-  padding-top: 13%;
 }
 
 #main .panel.project .inner {}
