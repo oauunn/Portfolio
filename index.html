@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오하은 - Portfolio</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/gsap-latest-beta.min.js"></script>
+    <script src="lib/ScrollTrigger.min.js"></script>
+    <script src="lib/ScrollToPlugin3.min.js"></script>
+    <script src="lib/ScrollSmoother.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+            const panels = gsap.utils.toArray(".panel");
+            const headerHeight = 80;
+            const $links = $("#header .nav a");
+            const $nav = $("#header .nav");
+
+            // 💡 동그라미 indicator 추가
+            if ($nav.find(".nav-underline").length === 0) {
+                $nav.append('<span class="nav-underline"></span>');
+            }
+            const $dot = $(".nav-underline");
+
+            // indicator 이동
+            function moveDot($link) {
+                if (!$link.length || !$dot.length) return;
+                const pos = $link.position();
+                if (!pos) return;
+                const centerX = pos.left + ($link.outerWidth() / 2) - 5;
+                $dot.css({ left: centerX + "px", opacity: 1 });
+            }
+
+            // 🔹 스냅 ScrollTrigger
+            ScrollTrigger.create({
+                start: 0,
+                end: "max",
+                snap: 1 / (panels.length - 1),
+            });
+
+            // 🔹 각 패널별 ScrollTrigger (활성 감지)
+            panels.forEach((panel, i) => {
+                ScrollTrigger.create({
+                    trigger: panel,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => setActive(i),
+                    onEnterBack: () => setActive(i),
+                });
+            });
+
+            function setActive(i) {
+                const $link = $links.eq(i);
+                $links.removeClass("active");
+                $link.addClass("active");
+                moveDot($link);
+            }
+
+            // 🔹 내비게이션 클릭 시 스냅 이동 (ScrollToPlugin)
+            $links.each(function (i) {
+                $(this).on("click", function (e) {
+                    e.preventDefault();
+                    gsap.to(window, {
+                        duration: 0.8,
+                        scrollTo: { y: panels[i], offsetY: headerHeight },
+                        ease: "power2.out",
+                    });
+                    setActive(i);
+                });
+            });
+
+            // 초기 위치 설정
+            const $first = $links.first();
+            $first.addClass("active");
+            setTimeout(() => moveDot($first), 100);
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <section id="header">
+        <div class="inner">
+            <h1>O·Haeun</h1>
+            <ul class="nav">
+                <li><a data-target=".intro">Intro</a></li>
+                <li><a data-target=".about">About</a></li>
+                <li><a data-target=".project">Project</a></li>
+                <li><a data-target=".design">Design</a></li>
+                <li><a data-target=".contact">Contact</a></li>
+                <span class="nav-underline"></span>
+            </ul><!-- .nav end -->
+        </div><!-- .inner end -->
+    </section><!-- #header end -->
+
+    <!-- 메인 -->
+    <section id="main">
+        <section class="panel intro">
+                <h1>Portfolio</h1>
+                <div class="bottom">
+                    <img src="img/proto.jpg" alt="QR코드">
+                    <p>QR CODE</p>
+                </div><!-- .bottom end -->
+        </section><!-- .panel intro end -->
+
+        <section class="panel about">
+            <div class="inner">
+                <div class="left-box">
+                    <img src="img/proto.jpg" alt="프로필">
+                    <div class="text">
+                        <ul class="left">
+                            <li><strong>NAME</strong></li>
+                            <li><strong>BIRTH</strong></li>
+                            <li><strong>PHONE</strong></li>
+                            <li><strong>E-MAIL</strong></li>
+                        </ul><!-- .left end -->
+                        <ul class="right">
+                            <li>
+                                <p>오하은</p>
+                            </li>
+                            <li>
+                                <p>2001. 02. 15</p>
+                            </li>
+                            <li>
+                                <p>010-7773-1845</p>
+                            </li>
+                            <li>
+                                <p>dhgkrma@gmail.com</p>
+                            </li>
+                        </ul><!-- .right end -->
+                    </div><!-- .text end -->
+                </div><!-- .left-box end -->
+
+                <div class="right-box">
+                    <div class="list">
+                        <div class="item">
+                            <h3>CERTIFICATE</h3>
+                            <ul>
+                                <li>2024</li>
+                                <li>ITQ 한글액셀 A급</li>
+                                <li>한국생산성본부(KPC)</li>
+                            </ul>
+                            <ul>
+                                <li>2024</li>
+                                <li>ITQ 한글액셀 A급</li>
+                                <li>한국생산성본부(KPC)</li>
+                            </ul>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <h3>EDUCATION</h3>
+                            <ul>
+                                <li>2025</li>
+                                <li>그린컴퓨터아카데미 UI/UX 반응형 웹디자인&웹퍼블리셔 양성과정</li>
+                                <li>수료 2025. 07 - 2025. 11</li>
+                            </ul>
+                            <ul>
+                                <li>2024</li>
+                                <li>동서대학교 패션디자인학과</li>
+                                <li>졸업 2020. 03 - 2025. 01</li>
+                            </ul>
+                            <ul>
+                                <li>2020</li>
+                                <li>가야고등학교</li>
+                                <li>졸업 2017. 03 - 2020. 01</li>
+                            </ul>
+                        </div><!-- .item end -->
+
+                        <div class="item">
+                            <h3>SKILL</h3>
+                            <ul>
+                                <li><img src="img/" alt="포토샵"></li>
+                                <li><img src="img/" alt="일러스트"></li>
+                                <li><img src="img/" alt="피그마"></li>
+                                <li><img src="img/" alt=""></li>
+                            </ul>
+                        </div><!-- .item end -->
+                    </div><!-- .list end -->
+                </div><!-- .right-box end -->
+            </div><!-- .inner end -->
+        </section><!-- .panel about end -->
+
+        <section class="panel project">
+            <div class="inner">
+                <h1>Project</h1>
+            </div><!-- .inner end -->
+        </section><!-- .panel project end -->
+
+        <section class="panel design">
+            <h1>Design</h1>
+        </section><!-- .panel design end -->
+
+        <section class="panel contact">
+            <h1>contact</h1>
+            <div class="inner">
+
+            </div><!-- .inner end -->
+        </section><!-- .panel contact end -->
+
+    </section><!-- #main end -->
+
+    <!-- 푸터 -->
+    <section id="footer">
+        <p>ⓒ 2025 O·Haeun. All Rights Reserved.</p>
+    </section><!-- #footer end -->
+
+</body>
+
+</html>
