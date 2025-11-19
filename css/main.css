@@ -132,11 +132,12 @@ body {
   line-height: 1.5;
   letter-spacing: 40px;
   color: #333333;
-}
-
-#main .panel.intro h1:hover {
   text-decoration: underline;
 }
+
+/* #main .panel.intro h1:hover {
+  text-decoration: underline;
+} */
 
 #main .panel.intro .bottom {
   position: absolute;
@@ -358,7 +359,7 @@ body {
   width: 100%;
   /* width: calc(100% - 300px); */
   margin: 0 auto;
-/*   position: absolute;
+  /*   position: absolute;
   top: 0;
   margin-top: 200px; */
 }
